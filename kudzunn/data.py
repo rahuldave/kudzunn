@@ -1,6 +1,6 @@
 import numpy as np
 from numpy import ndarray
-from typing import Tuple
+from typing import Tuple, Generator, List
 
 
 class Data:
@@ -24,7 +24,7 @@ class Data:
         # Start an array index for later
         self.starts = np.arange(0, self.length)
 
-    def shuffle(self) -> Tuple[ndarray, ndarray]:
+    def shuffle(self):
         """
         Shuffle the data.
 
@@ -48,13 +48,43 @@ class Data:
         """
         return self.y.shape[0]
 
-    def __getitem__(self, i: int) -> Tuple[float, float]:
+    def __getitem__(self, i: int) -> Tuple:
         """
         Get a pair of x,y at an index
 
         Returns
         -------
-        xy: (float, float)
+        xy: (int, int)
             The (x, y) tuple at an index i
         """
         return self.x[i], self.y[i]
+
+
+# idea+implementation taken from fast.ai
+class Sampler:
+    def __init__(self, data: Data, bs: int, shuffle: bool = False):
+        "initialize sampler which will give us a batch of shuffled indexes"
+        self.n = len(data.y)
+        self.idxs = np.arange(0, self.n)
+        self.bs = bs
+        self.shuffle = shuffle
+
+    def __iter__(self) -> Generator[List[int], None, None]:
+        "a generator for a batch size sized list of indexes"
+        if self.shuffle:
+            np.random.shuffle(self.idxs)
+        for i in range(0, self.n, self.bs):
+            yield self.idxs[i : i + self.bs]
+
+
+# this dataloader uses the Sampler
+class Dataloader:
+    def __init__(self, data: Data, sampler: Sampler):
+        self.data = data
+        self.sampler = sampler
+        self.current_batch = 0
+
+    def __iter__(self):
+        for idxsample in self.sampler:
+            yield self.data[idxsample]
+            self.current_batch += 1

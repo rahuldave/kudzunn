@@ -2,7 +2,7 @@ from kudzunn.optim import Optimizer
 from kudzunn.loss import Loss
 from kudzunn.function import Function
 from kudzunn.callbacks import Callback
-from kudzunn.data import Data
+from kudzunn.data import Dataloader
 from typing import List
 
 
@@ -65,7 +65,7 @@ class Learner:
             status = status and cbwanted and cbwanted(*args)
         return status
 
-    def train_loop(self, data: Data) -> float:
+    def train_loop(self, dl: Dataloader) -> float:
         """
         The training loop over epochs!
 
@@ -76,8 +76,8 @@ class Learner:
 
         Parameters
         ----------
-        data: Data
-            an instance of the Data class supplied.
+        dl: DataLoader
+            an instance of the DataLoader class supplied.
 
         Returns
         -------
@@ -87,22 +87,22 @@ class Learner:
         self("fit_start")
         for epoch in range(self.epochs):
             self("epoch_start", epoch)
-            inputs, targets = data.shuffle()
+            for inputs, targets in dl:
+                self("batch_start", dl.current_batch)
+                # make predictions
+                predicted = self.func(inputs)
 
-            # make predictions
-            predicted = self.func(inputs)
+                # actual loss value
+                epochloss = self.loss(predicted, targets)
+                self("after_loss", epochloss)
 
-            # actual loss value
-            epochloss = self.loss(predicted, targets)
-            self("after_loss", epochloss)
+                # calculate gradient
+                intermed = self.loss.backward(predicted, targets)
+                self.func.backward(intermed)
 
-            # calculate gradient
-            intermed = self.loss.backward(predicted, targets)
-            self.func.backward(intermed)
-
-            # update parameter with gradient
-            self.opt.step(self.func)
-
+                # update parameter with gradient
+                self.opt.step(self.func)
+                self("batch_end")
             self("epoch_end")
         self("fit_end")
         return epochloss
