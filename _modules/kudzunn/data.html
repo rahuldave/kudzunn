@@ -53,13 +53,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.callbacks">kudzunn.callbacks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#kudzunn-callbacks-module">kudzunn.callbacks module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.data">kudzunn.data module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.example">kudzunn.example module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.function">kudzunn.function module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.loss">kudzunn.loss module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.optim">kudzunn.optim module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.train">kudzunn.train module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#kudzunn-train-module">kudzunn.train module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn">Module contents</a></li>
 </ul>
 </li>
@@ -100,7 +100,7 @@
   <h1>Source code for kudzunn.data</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">ndarray</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span>
 
 
 <div class="viewcode-block" id="Data"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.data.Data">[docs]</a><span class="k">class</span> <span class="nc">Data</span><span class="p">:</span>
@@ -124,7 +124,7 @@
         <span class="c1"># Start an array index for later</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Data.shuffle"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.data.Data.shuffle">[docs]</a>    <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">]:</span>
+<div class="viewcode-block" id="Data.shuffle"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.data.Data.shuffle">[docs]</a>    <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Shuffle the data.</span>
 
@@ -148,16 +148,46 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a pair of x,y at an index</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        xy: (float, float)</span>
+<span class="sd">        xy: (int, int)</span>
 <span class="sd">            The (x, y) tuple at an index i</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></div>
+
+
+<span class="c1"># idea+implementation taken from fast.ai</span>
+<div class="viewcode-block" id="Sampler"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.data.Sampler">[docs]</a><span class="k">class</span> <span class="nc">Sampler</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">bs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">shuffle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="s2">&quot;initialize sampler which will give us a batch of shuffled indexes&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">bs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span> <span class="o">=</span> <span class="n">shuffle</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="s2">&quot;a generator for a batch size sized list of indexes&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span><span class="p">:</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">idxs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">idxs</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="p">]</span></div>
+
+
+<span class="c1"># this dataloader uses the Sampler</span>
+<div class="viewcode-block" id="Dataloader"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.data.Dataloader">[docs]</a><span class="k">class</span> <span class="nc">Dataloader</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">sampler</span><span class="p">:</span> <span class="n">Sampler</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span> <span class="o">=</span> <span class="n">sampler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_batch</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">idxsample</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">idxsample</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_batch</span> <span class="o">+=</span> <span class="mi">1</span></div>
 </pre></div>
 
            </div>
