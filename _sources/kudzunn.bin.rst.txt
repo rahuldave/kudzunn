@@ -1,0 +1,21 @@
+kudzunn.bin package
+===================
+
+Submodules
+----------
+
+kudzunn.bin.my\_example module
+------------------------------
+
+.. automodule:: kudzunn.bin.my_example
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: kudzunn.bin
+   :members:
+   :undoc-members:
+   :show-inheritance:

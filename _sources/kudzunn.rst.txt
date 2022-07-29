@@ -1,0 +1,29 @@
+kudzunn package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   kudzunn.bin
+
+Submodules
+----------
+
+kudzunn.example module
+----------------------
+
+.. automodule:: kudzunn.example
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: kudzunn
+   :members:
+   :undoc-members:
+   :show-inheritance:
