@@ -12,10 +12,58 @@ Subpackages
 Submodules
 ----------
 
+kudzunn.callbacks module
+------------------------
+
+.. automodule:: kudzunn.callbacks
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+kudzunn.data module
+-------------------
+
+.. automodule:: kudzunn.data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 kudzunn.example module
 ----------------------
 
 .. automodule:: kudzunn.example
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+kudzunn.function module
+-----------------------
+
+.. automodule:: kudzunn.function
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+kudzunn.loss module
+-------------------
+
+.. automodule:: kudzunn.loss
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+kudzunn.optim module
+--------------------
+
+.. automodule:: kudzunn.optim
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+kudzunn.train module
+--------------------
+
+.. automodule:: kudzunn.train
    :members:
    :undoc-members:
    :show-inheritance:

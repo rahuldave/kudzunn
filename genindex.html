@@ -53,7 +53,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="kudzunn.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kudzunn.html#module-kudzunn.callbacks">kudzunn.callbacks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kudzunn.html#kudzunn-data-module">kudzunn.data module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kudzunn.html#module-kudzunn.example">kudzunn.example module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kudzunn.html#kudzunn-function-module">kudzunn.function module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kudzunn.html#kudzunn-loss-module">kudzunn.loss module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kudzunn.html#module-kudzunn.optim">kudzunn.optim module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kudzunn.html#module-kudzunn.train">kudzunn.train module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kudzunn.html#module-kudzunn">Module contents</a></li>
 </ul>
 </li>
@@ -94,11 +100,18 @@
 
 <div class="genindex-jumpbox">
  <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
  
@@ -106,7 +119,37 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.callbacks.AccCallback">AccCallback (class in kudzunn.callbacks)</a>
+</li>
+      <li><a href="kudzunn.html#kudzunn.callbacks.AccCallback.after_loss">after_loss() (kudzunn.callbacks.AccCallback method)</a>
+
+      <ul>
+        <li><a href="kudzunn.html#kudzunn.callbacks.Callback.after_loss">(kudzunn.callbacks.Callback method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="kudzunn.bin.html#kudzunn.bin.my_example.Args">Args (class in kudzunn.bin.my_example)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.callbacks.Callback.batch_end">batch_end() (kudzunn.callbacks.Callback method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.callbacks.Callback.batch_start">batch_start() (kudzunn.callbacks.Callback method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.callbacks.Callback">Callback (class in kudzunn.callbacks)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -126,14 +169,50 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.callbacks.AccCallback.epoch_end">epoch_end() (kudzunn.callbacks.AccCallback method)</a>
+
+      <ul>
+        <li><a href="kudzunn.html#kudzunn.callbacks.Callback.epoch_end">(kudzunn.callbacks.Callback method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.callbacks.AccCallback.epoch_start">epoch_start() (kudzunn.callbacks.AccCallback method)</a>
+
+      <ul>
+        <li><a href="kudzunn.html#kudzunn.callbacks.Callback.epoch_start">(kudzunn.callbacks.Callback method)</a>
+</li>
+      </ul></li>
       <li><a href="kudzunn.html#kudzunn.example.Example">Example (class in kudzunn.example)</a>
 </li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.callbacks.AccCallback.fit_end">fit_end() (kudzunn.callbacks.AccCallback method)</a>
+
+      <ul>
+        <li><a href="kudzunn.html#kudzunn.callbacks.Callback.fit_end">(kudzunn.callbacks.Callback method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.callbacks.AccCallback.fit_start">fit_start() (kudzunn.callbacks.AccCallback method)</a>
+
+      <ul>
+        <li><a href="kudzunn.html#kudzunn.callbacks.Callback.fit_start">(kudzunn.callbacks.Callback method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.optim.GD">GD (class in kudzunn.optim)</a>
+</li>
       <li><a href="kudzunn.html#kudzunn.get_module_version">get_module_version() (in module kudzunn)</a>
 </li>
   </ul></td>
@@ -162,8 +241,6 @@
         <li><a href="kudzunn.bin.html#module-kudzunn.bin">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     kudzunn.bin.my_example
 
@@ -172,12 +249,43 @@
 </li>
       </ul></li>
       <li>
+    kudzunn.callbacks
+
+      <ul>
+        <li><a href="kudzunn.html#module-kudzunn.callbacks">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
     kudzunn.example
 
       <ul>
         <li><a href="kudzunn.html#module-kudzunn.example">module</a>
 </li>
       </ul></li>
+      <li>
+    kudzunn.optim
+
+      <ul>
+        <li><a href="kudzunn.html#module-kudzunn.optim">module</a>
+</li>
+      </ul></li>
+      <li>
+    kudzunn.train
+
+      <ul>
+        <li><a href="kudzunn.html#module-kudzunn.train">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.train.Learner">Learner (class in kudzunn.train)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -196,9 +304,47 @@
 </li>
         <li><a href="kudzunn.bin.html#module-kudzunn.bin.my_example">kudzunn.bin.my_example</a>
 </li>
+        <li><a href="kudzunn.html#module-kudzunn.callbacks">kudzunn.callbacks</a>
+</li>
         <li><a href="kudzunn.html#module-kudzunn.example">kudzunn.example</a>
 </li>
+        <li><a href="kudzunn.html#module-kudzunn.optim">kudzunn.optim</a>
+</li>
+        <li><a href="kudzunn.html#module-kudzunn.train">kudzunn.train</a>
+</li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.optim.Optimizer">Optimizer (class in kudzunn.optim)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.train.Learner.set_callbacks">set_callbacks() (kudzunn.train.Learner method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.optim.GD.step">step() (kudzunn.optim.GD method)</a>
+
+      <ul>
+        <li><a href="kudzunn.html#kudzunn.optim.Optimizer.step">(kudzunn.optim.Optimizer method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kudzunn.html#kudzunn.train.Learner.train_loop">train_loop() (kudzunn.train.Learner method)</a>
+</li>
   </ul></td>
 </tr></table>
 

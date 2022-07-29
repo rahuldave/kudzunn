@@ -56,7 +56,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.callbacks">kudzunn.callbacks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kudzunn-data-module">kudzunn.data module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.example">kudzunn.example module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kudzunn-function-module">kudzunn.function module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kudzunn-loss-module">kudzunn.loss module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.optim">kudzunn.optim module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.train">kudzunn.train module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-kudzunn">Module contents</a></li>
 </ul>
 </li>
@@ -114,6 +120,84 @@
 </section>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-kudzunn.callbacks">
+<span id="kudzunn-callbacks-module"></span><h2>kudzunn.callbacks module<a class="headerlink" href="#module-kudzunn.callbacks" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.callbacks.</span></span><span class="sig-name descname"><span class="pre">AccCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#AccCallback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.AccCallback" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kudzunn.callbacks.Callback" title="kudzunn.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback.after_loss">
+<span class="sig-name descname"><span class="pre">after_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#AccCallback.after_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.AccCallback.after_loss" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback.epoch_end">
+<span class="sig-name descname"><span class="pre">epoch_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#AccCallback.epoch_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.AccCallback.epoch_end" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback.epoch_start">
+<span class="sig-name descname"><span class="pre">epoch_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#AccCallback.epoch_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.AccCallback.epoch_start" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback.fit_end">
+<span class="sig-name descname"><span class="pre">fit_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#AccCallback.fit_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.AccCallback.fit_end" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback.fit_start">
+<span class="sig-name descname"><span class="pre">fit_start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#AccCallback.fit_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.AccCallback.fit_start" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.callbacks.Callback">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.callbacks.</span></span><span class="sig-name descname"><span class="pre">Callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.Callback.after_loss">
+<span class="sig-name descname"><span class="pre">after_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback.after_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback.after_loss" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.Callback.batch_end">
+<span class="sig-name descname"><span class="pre">batch_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback.batch_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback.batch_end" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.Callback.batch_start">
+<span class="sig-name descname"><span class="pre">batch_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback.batch_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback.batch_start" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.Callback.epoch_end">
+<span class="sig-name descname"><span class="pre">epoch_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback.epoch_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback.epoch_end" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.Callback.epoch_start">
+<span class="sig-name descname"><span class="pre">epoch_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback.epoch_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback.epoch_start" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.Callback.fit_end">
+<span class="sig-name descname"><span class="pre">fit_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback.fit_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback.fit_end" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.callbacks.Callback.fit_start">
+<span class="sig-name descname"><span class="pre">fit_start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback.fit_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback.fit_start" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="kudzunn-data-module">
+<h2>kudzunn.data module<a class="headerlink" href="#kudzunn-data-module" title="Permalink to this heading"></a></h2>
 </section>
 <section id="module-kudzunn.example">
 <span id="kudzunn-example-module"></span><h2>kudzunn.example module<a class="headerlink" href="#module-kudzunn.example" title="Permalink to this heading"></a></h2>
@@ -188,6 +272,56 @@ order.</p>
 </dd>
 </dl>
 </dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="kudzunn-function-module">
+<h2>kudzunn.function module<a class="headerlink" href="#kudzunn-function-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="kudzunn-loss-module">
+<h2>kudzunn.loss module<a class="headerlink" href="#kudzunn-loss-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-kudzunn.optim">
+<span id="kudzunn-optim-module"></span><h2>kudzunn.optim module<a class="headerlink" href="#module-kudzunn.optim" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.optim.GD">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.optim.</span></span><span class="sig-name descname"><span class="pre">GD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#GD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.GD" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kudzunn.optim.Optimizer" title="kudzunn.optim.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optimizer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.optim.GD.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#GD.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.GD.step" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.optim.Optimizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.optim.</span></span><span class="sig-name descname"><span class="pre">Optimizer</span></span><a class="reference internal" href="_modules/kudzunn/optim.html#Optimizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.Optimizer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.optim.Optimizer.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#Optimizer.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.Optimizer.step" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-kudzunn.train">
+<span id="kudzunn-train-module"></span><h2>kudzunn.train module<a class="headerlink" href="#module-kudzunn.train" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.train.Learner">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.train.</span></span><span class="sig-name descname"><span class="pre">Learner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.train.Learner.set_callbacks">
+<span class="sig-name descname"><span class="pre">set_callbacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cblist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner.set_callbacks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner.set_callbacks" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.train.Learner.train_loop">
+<span class="sig-name descname"><span class="pre">train_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner.train_loop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner.train_loop" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
