@@ -102,6 +102,18 @@
 
 
 <div class="viewcode-block" id="Callback"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.callbacks.Callback">[docs]</a><span class="k">class</span> <span class="nc">Callback</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A callback is a piece of code you want to run at a given moment in the</span>
+<span class="sd">    lifecycle of a training loop. In kudzunn, callbacks are instances of the</span>
+<span class="sd">    class `Callback` and its derived classes. The methods of these classes</span>
+<span class="sd">    are run at different times. Here we support callbacks at fit start and</span>
+<span class="sd">    end, batch start and end, epoch start and end, and finally, after the loss</span>
+<span class="sd">    is computed in each epoch. Callback methods must return `True` on proper</span>
+<span class="sd">    completion: this is how we signal that the next callback can be run at</span>
+<span class="sd">    that moment. The next callback will be the same method of another callback</span>
+<span class="sd">    instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">learner</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">learner</span> <span class="o">=</span> <span class="n">learner</span>
 
@@ -128,7 +140,14 @@
 
 
 <div class="viewcode-block" id="AccCallback"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.callbacks.AccCallback">[docs]</a><span class="k">class</span> <span class="nc">AccCallback</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An accumulator callback accumulates parameter history and gradient history</span>
+<span class="sd">    for every parameter, as well as the entire history of losses over the</span>
+<span class="sd">    training run.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">learner</span><span class="p">):</span>
+        <span class="s2">&quot;Sets up history lists for each parameter, and for the losses&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">learner</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">paramhist</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
@@ -149,8 +168,10 @@
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="AccCallback.epoch_end"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.callbacks.AccCallback.epoch_end">[docs]</a>    <span class="k">def</span> <span class="nf">epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Display the epoch and the loss, and the parameter values. Accumulate.&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">Loss </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">fnval</span><span class="p">,</span> <span class="n">grval</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">params_and_grads</span><span class="p">():</span>
+            <span class="c1"># Note this print does not scale to millions of parameters</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">fnval</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">grval</span><span class="si">}</span><span class="se">\n</span><span class="s2">---&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">paramhist</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fnval</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">gradhist</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grval</span><span class="p">)</span>

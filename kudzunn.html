@@ -127,6 +127,10 @@
 <dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.callbacks.</span></span><span class="sig-name descname"><span class="pre">AccCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#AccCallback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.AccCallback" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kudzunn.callbacks.Callback" title="kudzunn.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>An accumulator callback accumulates parameter history and gradient history
+for every parameter, as well as the entire history of losses over the
+training run.</p>
+<p>Sets up history lists for each parameter, and for the losses</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback.after_loss">
 <span class="sig-name descname"><span class="pre">after_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#AccCallback.after_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.AccCallback.after_loss" title="Permalink to this definition"></a></dt>
@@ -135,7 +139,8 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback.epoch_end">
 <span class="sig-name descname"><span class="pre">epoch_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#AccCallback.epoch_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.AccCallback.epoch_end" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Display the epoch and the loss, and the parameter values. Accumulate.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.callbacks.AccCallback.epoch_start">
@@ -158,6 +163,15 @@
 <dt class="sig sig-object py" id="kudzunn.callbacks.Callback">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.callbacks.</span></span><span class="sig-name descname"><span class="pre">Callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A callback is a piece of code you want to run at a given moment in the
+lifecycle of a training loop. In kudzunn, callbacks are instances of the
+class <cite>Callback</cite> and its derived classes. The methods of these classes
+are run at different times. Here we support callbacks at fit start and
+end, batch start and end, epoch start and end, and finally, after the loss
+is computed in each epoch. Callback methods must return <cite>True</cite> on proper
+completion: this is how we signal that the next callback can be run at
+that moment. The next callback will be the same method of another callback
+instance.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.callbacks.Callback.after_loss">
 <span class="sig-name descname"><span class="pre">after_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/callbacks.html#Callback.after_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.callbacks.Callback.after_loss" title="Permalink to this definition"></a></dt>
@@ -288,10 +302,12 @@ order.</p>
 <dt class="sig sig-object py" id="kudzunn.optim.GD">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.optim.</span></span><span class="sig-name descname"><span class="pre">GD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#GD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.GD" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kudzunn.optim.Optimizer" title="kudzunn.optim.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optimizer</span></code></a></p>
+<p>Gradient Descent Optimizer.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.optim.GD.step">
 <span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#GD.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.GD.step" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Makes a gradient descent step for all parameters by lr*gradient</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -299,6 +315,7 @@ order.</p>
 <dt class="sig sig-object py" id="kudzunn.optim.Optimizer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.optim.</span></span><span class="sig-name descname"><span class="pre">Optimizer</span></span><a class="reference internal" href="_modules/kudzunn/optim.html#Optimizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.Optimizer" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract Class for Optimizer</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.optim.Optimizer.step">
 <span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#Optimizer.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.Optimizer.step" title="Permalink to this definition"></a></dt>
@@ -313,6 +330,8 @@ order.</p>
 <dt class="sig sig-object py" id="kudzunn.train.Learner">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.train.</span></span><span class="sig-name descname"><span class="pre">Learner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Learner class encapsulates the training. The constructor
+initializes. We can then set the callbacks and run the training loop</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.train.Learner.set_callbacks">
 <span class="sig-name descname"><span class="pre">set_callbacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cblist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner.set_callbacks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner.set_callbacks" title="Permalink to this definition"></a></dt>
@@ -321,7 +340,8 @@ order.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.train.Learner.train_loop">
 <span class="sig-name descname"><span class="pre">train_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner.train_loop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner.train_loop" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The training loop!</p>
+</dd></dl>
 
 </dd></dl>
 

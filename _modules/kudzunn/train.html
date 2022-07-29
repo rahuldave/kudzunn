@@ -99,6 +99,11 @@
              
   <h1>Source code for kudzunn.train</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="Learner"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.train.Learner">[docs]</a><span></span><span class="k">class</span> <span class="nc">Learner</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Learner class encapsulates the training. The constructor</span>
+<span class="sd">    initializes. We can then set the callbacks and run the training loop</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
@@ -111,6 +116,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cbname</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="s2">&quot;hack to use dunder call to run callbacks&quot;</span>
         <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="p">:</span>
             <span class="n">cbwanted</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">cbname</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -118,6 +124,7 @@
         <span class="k">return</span> <span class="n">status</span>
 
 <div class="viewcode-block" id="Learner.train_loop"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.train.Learner.train_loop">[docs]</a>    <span class="k">def</span> <span class="nf">train_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="s2">&quot;The training loop!&quot;</span>
         <span class="bp">self</span><span class="p">(</span><span class="s2">&quot;fit_start&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
             <span class="bp">self</span><span class="p">(</span><span class="s2">&quot;epoch_start&quot;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
