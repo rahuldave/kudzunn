@@ -1,4 +1,9 @@
 class Learner:
+    """
+    Learner class encapsulates the training. The constructor
+    initializes. We can then set the callbacks and run the training loop
+    """
+
     def __init__(self, opt, loss, func, epochs):
         self.loss = loss
         self.func = func
@@ -11,6 +16,7 @@ class Learner:
             self.cbs.append(cb)
 
     def __call__(self, cbname, *args):
+        "hack to use dunder call to run callbacks"
         status = True
         for cb in self.cbs:
             cbwanted = getattr(cb, cbname, None)
@@ -18,6 +24,7 @@ class Learner:
         return status
 
     def train_loop(self, data):
+        "The training loop!"
         self("fit_start")
         for epoch in range(self.epochs):
             self("epoch_start", epoch)
