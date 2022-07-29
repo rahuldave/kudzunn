@@ -57,10 +57,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.callbacks">kudzunn.callbacks module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#kudzunn-data-module">kudzunn.data module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.data">kudzunn.data module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.example">kudzunn.example module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#kudzunn-function-module">kudzunn.function module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#kudzunn-loss-module">kudzunn.loss module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.function">kudzunn.function module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.loss">kudzunn.loss module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.optim">kudzunn.optim module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-kudzunn.train">kudzunn.train module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-kudzunn">Module contents</a></li>
@@ -210,8 +210,38 @@ instance.</p>
 </dd></dl>
 
 </section>
-<section id="kudzunn-data-module">
-<h2>kudzunn.data module<a class="headerlink" href="#kudzunn-data-module" title="Permalink to this heading"></a></h2>
+<section id="module-kudzunn.data">
+<span id="kudzunn-data-module"></span><h2>kudzunn.data module<a class="headerlink" href="#module-kudzunn.data" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.data.Data">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.data.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/data.html#Data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.data.Data" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A sequence abstraction that represents data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – Independent Variable in 1D</p></li>
+<li><p><strong>actual</strong> (<em>ndarray</em>) – Dependent variable in 1D</p></li>
+<li><p><strong>shuffle</strong> (<em>bool</em>) – Should we shuffle the data?</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.data.Data.shuffle">
+<span class="sig-name descname"><span class="pre">shuffle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/kudzunn/data.html#Data.shuffle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.data.Data.shuffle" title="Permalink to this definition"></a></dt>
+<dd><p>Shuffle the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>shuffled</strong> – A tuple of shuffled ndarrays, x first, y second</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>(ndarray, ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-kudzunn.example">
 <span id="kudzunn-example-module"></span><h2>kudzunn.example module<a class="headerlink" href="#module-kudzunn.example" title="Permalink to this heading"></a></h2>
@@ -290,23 +320,173 @@ order.</p>
 </dd></dl>
 
 </section>
-<section id="kudzunn-function-module">
-<h2>kudzunn.function module<a class="headerlink" href="#kudzunn-function-module" title="Permalink to this heading"></a></h2>
+<section id="module-kudzunn.function">
+<span id="kudzunn-function-module"></span><h2>kudzunn.function module<a class="headerlink" href="#module-kudzunn.function" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.function.Function">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.function.</span></span><span class="sig-name descname"><span class="pre">Function</span></span><a class="reference internal" href="_modules/kudzunn/function.html#Function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.function.Function" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An abstraction for a function. The constructor initializes the parameters
+of the function. Dunder <cite>__call__</cite> actually calls it, using these
+parameters as state. The gradient of the function with respect to its
+inputs and parameters must be provided using <cite>backward</cite>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.function.Function.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/kudzunn/function.html#Function.backward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.function.Function.backward" title="Permalink to this definition"></a></dt>
+<dd><p>Compute and store gradients wrt parameters.
+Return gradient wrt inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>grad</strong> (<em>ndarray</em>) – Gradient of the loss with respect to this function</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outgrads</strong> – A numpy array representing gradient of the loss with
+respect to the inputs of this function</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.function.Function.params_and_grads">
+<span class="sig-name descname"><span class="pre">params_and_grads</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/function.html#Function.params_and_grads"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.function.Function.params_and_grads" title="Permalink to this definition"></a></dt>
+<dd><p>Obtain a list of parameter values and their gradients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>pglist</strong> – A python list of tuples. Each tuple has the parameter name,
+the parameter values, and the value of the gradient wrt
+the parameter.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.function.ZeroBiasAffine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.function.</span></span><span class="sig-name descname"><span class="pre">ZeroBiasAffine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">winit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wgrad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/function.html#ZeroBiasAffine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.function.ZeroBiasAffine" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kudzunn.function.Function" title="kudzunn.function.Function"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function</span></code></a></p>
+<p>A function that defines a linear tranform in 1-D. It multiplies the input
+by a single parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>winit</strong> (<em>float</em>) – An initialization to provide the function parameter w.</p></li>
+<li><p><strong>wgrad</strong> (<em>float</em>) – An initialization to provide the gradient dJ/dw.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.function.ZeroBiasAffine.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/kudzunn/function.html#ZeroBiasAffine.backward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.function.ZeroBiasAffine.backward" title="Permalink to this definition"></a></dt>
+<dd><p>Compute and store gradients wrt parameters.
+Since dJ/dw = dJ/df*df/dw we store the dot of the incoming
+gradient with inputs. Since dJ/dx = dJ/df*df/dx
+we return gradient wrt inputs as grad*w.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>grad</strong> (<em>ndarray</em>) – Gradient of the loss with respect to this function</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outgrads</strong> – A numpy array representing gradient of the loss with
+respect to the inputs of this function.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="kudzunn-loss-module">
-<h2>kudzunn.loss module<a class="headerlink" href="#kudzunn-loss-module" title="Permalink to this heading"></a></h2>
+<section id="module-kudzunn.loss">
+<span id="kudzunn-loss-module"></span><h2>kudzunn.loss module<a class="headerlink" href="#module-kudzunn.loss" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.loss.Loss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.loss.</span></span><span class="sig-name descname"><span class="pre">Loss</span></span><a class="reference internal" href="_modules/kudzunn/loss.html#Loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.loss.Loss" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract Base Class for losses. Defines an interface in which
+dunder __call__ is used to compute the value of the loss (forward)
+and the <cite>backward</cite> method is used to compute the gradient with respect
+to the prediction function computed at the input data points.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.loss.Loss.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/kudzunn/loss.html#Loss.backward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.loss.Loss.backward" title="Permalink to this definition"></a></dt>
+<dd><p>Gradient of the loss with respect to the prediction function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicted</strong> (<em>ndarray</em>) – An array of predictions of the dependent variable</p></li>
+<li><p><strong>actual</strong> (<em>ndarray</em>) – An array of actual values of the dependent variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>grads</strong> – The gradient of the loss with respect to the function.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kudzunn.loss.MSE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.loss.</span></span><span class="sig-name descname"><span class="pre">MSE</span></span><a class="reference internal" href="_modules/kudzunn/loss.html#MSE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.loss.MSE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kudzunn.loss.Loss" title="kudzunn.loss.Loss"><code class="xref py py-class docutils literal notranslate"><span class="pre">Loss</span></code></a></p>
+<p>MSE loss. Computes the square of the residual, sums it up over all
+points and divides by the number of points.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="kudzunn.loss.MSE.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/kudzunn/loss.html#MSE.backward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.loss.MSE.backward" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicted</strong> (<em>ndarray</em>) – An array of predictions of the dependent variable</p></li>
+<li><p><strong>actual</strong> (<em>ndarray</em>) – An array of actual values of the dependent variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>grads</strong> – The gradient of the loss with respect to the function. For
+the squared error this loss is 2/N <a href="#id1"><span class="problematic" id="id2">*</span></a>(residual)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-kudzunn.optim">
 <span id="kudzunn-optim-module"></span><h2>kudzunn.optim module<a class="headerlink" href="#module-kudzunn.optim" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kudzunn.optim.GD">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.optim.</span></span><span class="sig-name descname"><span class="pre">GD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#GD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.GD" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.optim.</span></span><span class="sig-name descname"><span class="pre">GD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#GD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.GD" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kudzunn.optim.Optimizer" title="kudzunn.optim.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optimizer</span></code></a></p>
 <p>Gradient Descent Optimizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lr</strong> (<em>float</em>) – The learing rate to scale the gradient with</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.optim.GD.step">
-<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#GD.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.GD.step" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/kudzunn/optim.html#GD.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.GD.step" title="Permalink to this definition"></a></dt>
 <dd><p>Makes a gradient descent step for all parameters by lr*gradient</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>func</strong> (<em>Function</em>) – The function whose parameters need to be stepped</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -315,11 +495,16 @@ order.</p>
 <dt class="sig sig-object py" id="kudzunn.optim.Optimizer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.optim.</span></span><span class="sig-name descname"><span class="pre">Optimizer</span></span><a class="reference internal" href="_modules/kudzunn/optim.html#Optimizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.Optimizer" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Abstract Class for Optimizer</p>
+<p>Abstract Class for Optimizer.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.optim.Optimizer.step">
-<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/optim.html#Optimizer.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.Optimizer.step" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/kudzunn/optim.html#Optimizer.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.optim.Optimizer.step" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>func</strong> (<em>Function</em>) – The function whose parameters need to be stepped</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -328,19 +513,49 @@ order.</p>
 <span id="kudzunn-train-module"></span><h2>kudzunn.train module<a class="headerlink" href="#module-kudzunn.train" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kudzunn.train.Learner">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.train.</span></span><span class="sig-name descname"><span class="pre">Learner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kudzunn.train.</span></span><span class="sig-name descname"><span class="pre">Learner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#kudzunn.optim.Optimizer" title="kudzunn.optim.Optimizer"><span class="pre">Optimizer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#kudzunn.loss.Loss" title="kudzunn.loss.Loss"><span class="pre">Loss</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#kudzunn.function.Function" title="kudzunn.function.Function"><span class="pre">Function</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Learner class encapsulates the training. The constructor
 initializes. We can then set the callbacks and run the training loop</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>opt</strong> (<em>Optimizer</em>) – optim to use. currently only an instance of <cite>GD()</cite></p></li>
+<li><p><strong>loss</strong> (<em>Loss</em>) – the class representing the loss function</p></li>
+<li><p><strong>func</strong> (<em>Function</em>) – currently the function in this 1-layer network</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – The number of epochs to train the model</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.train.Learner.set_callbacks">
-<span class="sig-name descname"><span class="pre">set_callbacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cblist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner.set_callbacks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner.set_callbacks" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">set_callbacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cblist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#kudzunn.callbacks.Callback" title="kudzunn.callbacks.Callback"><span class="pre">Callback</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/kudzunn/train.html#Learner.set_callbacks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner.set_callbacks" title="Permalink to this definition"></a></dt>
+<dd><p>Take a list of callbacks and add it to the internal callback array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cblist</strong> (<em>List[Callback]</em>) – An list of callback class instances</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="kudzunn.train.Learner.train_loop">
-<span class="sig-name descname"><span class="pre">train_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kudzunn/train.html#Learner.train_loop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner.train_loop" title="Permalink to this definition"></a></dt>
-<dd><p>The training loop!</p>
+<span class="sig-name descname"><span class="pre">train_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#kudzunn.data.Data" title="kudzunn.data.Data"><span class="pre">Data</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/kudzunn/train.html#Learner.train_loop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kudzunn.train.Learner.train_loop" title="Permalink to this definition"></a></dt>
+<dd><p>The training loop over epochs!</p>
+<p>The calculation of the loss, and then the backpropagation,
+and finally the optimizer step.</p>
+<p>Callbacks are run at appropriate spots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Data</em>) – an instance of the Data class supplied.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>finalloss</strong> – loss at end of all the epochs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

@@ -54,10 +54,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.callbacks">kudzunn.callbacks module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#kudzunn-data-module">kudzunn.data module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.data">kudzunn.data module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.example">kudzunn.example module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#kudzunn-function-module">kudzunn.function module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#kudzunn-loss-module">kudzunn.loss module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.function">kudzunn.function module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.loss">kudzunn.loss module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.optim">kudzunn.optim module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.train">kudzunn.train module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn">Module contents</a></li>
@@ -98,37 +98,96 @@
            <div itemprop="articleBody">
              
   <h1>Source code for kudzunn.train</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="Learner"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.train.Learner">[docs]</a><span></span><span class="k">class</span> <span class="nc">Learner</span><span class="p">:</span>
+<span></span><span class="kn">from</span> <span class="nn">kudzunn.optim</span> <span class="kn">import</span> <span class="n">Optimizer</span>
+<span class="kn">from</span> <span class="nn">kudzunn.loss</span> <span class="kn">import</span> <span class="n">Loss</span>
+<span class="kn">from</span> <span class="nn">kudzunn.function</span> <span class="kn">import</span> <span class="n">Function</span>
+<span class="kn">from</span> <span class="nn">kudzunn.callbacks</span> <span class="kn">import</span> <span class="n">Callback</span>
+<span class="kn">from</span> <span class="nn">kudzunn.data</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+
+<div class="viewcode-block" id="Learner"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.train.Learner">[docs]</a><span class="k">class</span> <span class="nc">Learner</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Learner class encapsulates the training. The constructor</span>
 <span class="sd">    initializes. We can then set the callbacks and run the training loop</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    opt: Optimizer</span>
+<span class="sd">        optim to use. currently only an instance of `GD()`</span>
+<span class="sd">    loss: Loss</span>
+<span class="sd">        the class representing the loss function</span>
+<span class="sd">    func: Function</span>
+<span class="sd">        currently the function in this 1-layer network</span>
+<span class="sd">    epochs: int</span>
+<span class="sd">        The number of epochs to train the model</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">:</span> <span class="n">Optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">:</span> <span class="n">Loss</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Function</span><span class="p">,</span> <span class="n">epochs</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">opt</span> <span class="o">=</span> <span class="n">opt</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Callback</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
-<div class="viewcode-block" id="Learner.set_callbacks"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.train.Learner.set_callbacks">[docs]</a>    <span class="k">def</span> <span class="nf">set_callbacks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cblist</span><span class="p">):</span>
+<div class="viewcode-block" id="Learner.set_callbacks"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.train.Learner.set_callbacks">[docs]</a>    <span class="k">def</span> <span class="nf">set_callbacks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cblist</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Callback</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Take a list of callbacks and add it to the internal callback array</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cblist: List[Callback]</span>
+<span class="sd">            An list of callback class instances</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="n">cblist</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cbname</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="s2">&quot;hack to use dunder call to run callbacks&quot;</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cbname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        hack to use dunder call to run the same method in all callbacks</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cbname: str</span>
+<span class="sd">            a string with the name of the callback method</span>
+<span class="sd">        args: List</span>
+<span class="sd">            a list of other arguments of the callbacks</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        success: bool</span>
+<span class="sd">            a boolean representing whether all the callbacks succeeded</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="p">:</span>
             <span class="n">cbwanted</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">cbname</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="n">status</span> <span class="o">=</span> <span class="n">status</span> <span class="ow">and</span> <span class="n">cbwanted</span> <span class="ow">and</span> <span class="n">cbwanted</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">status</span>
 
-<div class="viewcode-block" id="Learner.train_loop"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.train.Learner.train_loop">[docs]</a>    <span class="k">def</span> <span class="nf">train_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="s2">&quot;The training loop!&quot;</span>
+<div class="viewcode-block" id="Learner.train_loop"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.train.Learner.train_loop">[docs]</a>    <span class="k">def</span> <span class="nf">train_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The training loop over epochs!</span>
+
+<span class="sd">        The calculation of the loss, and then the backpropagation,</span>
+<span class="sd">        and finally the optimizer step.</span>
+
+<span class="sd">        Callbacks are run at appropriate spots.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data: Data</span>
+<span class="sd">            an instance of the Data class supplied.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        finalloss: float</span>
+<span class="sd">            loss at end of all the epochs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="p">(</span><span class="s2">&quot;fit_start&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
             <span class="bp">self</span><span class="p">(</span><span class="s2">&quot;epoch_start&quot;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
-            <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:]</span>
+            <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span>
 
             <span class="c1"># make predictions</span>
             <span class="n">predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>

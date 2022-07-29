@@ -54,10 +54,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.callbacks">kudzunn.callbacks module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#kudzunn-data-module">kudzunn.data module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.data">kudzunn.data module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.example">kudzunn.example module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#kudzunn-function-module">kudzunn.function module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#kudzunn-loss-module">kudzunn.loss module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.function">kudzunn.function module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.loss">kudzunn.loss module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.optim">kudzunn.optim module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn.train">kudzunn.train module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../kudzunn.html#module-kudzunn">Module contents</a></li>
@@ -99,20 +99,43 @@
              
   <h1>Source code for kudzunn.optim</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="Optimizer"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.optim.Optimizer">[docs]</a><span></span><span class="k">class</span> <span class="nc">Optimizer</span><span class="p">:</span>
-    <span class="s2">&quot;Abstract Class for Optimizer&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract Class for Optimizer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Optimizer.step"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.optim.Optimizer.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+<div class="viewcode-block" id="Optimizer.step"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.optim.Optimizer.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        func: Function</span>
+<span class="sd">            The function whose parameters need to be stepped</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div></div>
 
 
 <div class="viewcode-block" id="GD"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.optim.GD">[docs]</a><span class="k">class</span> <span class="nc">GD</span><span class="p">(</span><span class="n">Optimizer</span><span class="p">):</span>
-    <span class="s2">&quot;Gradient Descent Optimizer.&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gradient Descent Optimizer.</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lr: float</span>
+<span class="sd">        The learing rate to scale the gradient with</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>
 
-<div class="viewcode-block" id="GD.step"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.optim.GD.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
-        <span class="s2">&quot;Makes a gradient descent step for all parameters by lr*gradient&quot;</span>
+<div class="viewcode-block" id="GD.step"><a class="viewcode-back" href="../../kudzunn.html#kudzunn.optim.GD.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Makes a gradient descent step for all parameters by lr*gradient</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        func: Function</span>
+<span class="sd">            The function whose parameters need to be stepped</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">func</span><span class="o">.</span><span class="n">params_and_grads</span><span class="p">():</span>
             <span class="n">func</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">param</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">grad</span></div></div>
 </pre></div>
