@@ -46,7 +46,7 @@ extra_requirements = {
     "all": [
         *requirements,
         *dev_requirements,
-    ]
+    ],
 }
 
 setup(
@@ -63,9 +63,7 @@ setup(
     ],
     description="Neural Network library for Learning",
     entry_points={
-        "console_scripts": [
-            "my_example=kudzunn.bin.my_example:main"
-        ],
+        "console_scripts": ["my_example=kudzunn.bin.my_example:main"],
     },
     install_requires=requirements,
     license="MIT license",
