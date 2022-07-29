@@ -1,4 +1,7 @@
 from collections import defaultdict
+import numpy as np
+from kudzunn.train import Learner
+from typing import List, Dict
 
 
 class Callback:
@@ -14,28 +17,28 @@ class Callback:
     instance.
     """
 
-    def __init__(self, learner):
+    def __init__(self, learner: Learner) -> None:
         self.learner = learner
 
-    def fit_start(self):
+    def fit_start(self) -> bool:
         return True
 
-    def fit_end(self):
+    def fit_end(self) -> bool:
         return True
 
-    def epoch_start(self, epoch):
+    def epoch_start(self, epoch: int) -> bool:
         return True
 
-    def batch_start(self, batch):
+    def batch_start(self, current_batch: int) -> bool:
         return True
 
-    def after_loss(self, loss):
+    def after_loss(self, loss: float) -> bool:
         return True
 
-    def batch_end(self):
+    def batch_end(self) -> bool:
         return True
 
-    def epoch_end(self):
+    def epoch_end(self) -> bool:
         return True
 
 
@@ -46,34 +49,46 @@ class AccCallback(Callback):
     training run.
     """
 
-    def __init__(self, learner):
+    def __init__(self, learner: Learner) -> None:
         "Sets up history lists for each parameter, and for the losses"
         super().__init__(learner)
-        self.losses = []
-        self.paramhist = defaultdict(list)
-        self.gradhist = defaultdict(list)
+        self.losses: List[float] = []
+        self.batch_losses: List[float] = []
+        self.paramhist: Dict[str, List[float]] = defaultdict(list)
+        self.gradhist: Dict[str, List[float]] = defaultdict(list)
 
-    def fit_start(self):
+    def fit_start(self) -> bool:
         return True
 
-    def fit_end(self):
+    def fit_end(self) -> bool:
         return True
 
-    def epoch_start(self, epoch):
+    def epoch_start(self, epoch) -> bool:
         self.epoch = epoch
+        self.batch_counter = 0
         return True
 
-    def after_loss(self, loss):
+    def batch_start(self, current_batch) -> bool:
+        self.batch = current_batch
+        return True
+
+    def after_loss(self, loss) -> bool:
         self.loss = loss
         return True
 
-    def epoch_end(self):
+    def batch_end(self) -> bool:
+        self.batch_losses.append(self.loss)
+        self.batch_counter += 1
+        return True
+
+    def epoch_end(self) -> bool:
         "Display the epoch and the loss, and the parameter values. Accumulate."
-        print(f"Epoch {self.epoch}:\nLoss {self.loss}")
         for name, fnval, grval in self.learner.func.params_and_grads():
             # Note this print does not scale to millions of parameters
             print(f"{name}, {fnval}, {grval}\n---")
             self.paramhist[name].append(fnval)
             self.gradhist[name].append(grval)
-        self.losses.append(self.loss)
+        avloss = np.mean(self.batch_losses[-(self.batch_counter + 1) :])
+        print(f"Epoch {self.epoch}:\nLoss {avloss}")
+        self.losses.append(avloss)
         return True
