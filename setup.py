@@ -20,6 +20,7 @@ test_requirements = [
     "pytest>=5.4.3",
     "pytest-cov>=2.9.0",
     "pytest-raises>=0.11",
+    "numpy"
 ]
 
 dev_requirements = [
@@ -35,9 +36,10 @@ dev_requirements = [
     "tox>=3.15.2",
     "twine>=3.1.1",
     "wheel>=0.34.2",
+    "numpy"
 ]
 
-requirements = []
+requirements = ["numpy"]
 
 extra_requirements = {
     "setup": setup_requirements,
